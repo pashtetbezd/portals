@@ -1,0 +1,49 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 25
+    buildToolsVersion "25.0.2"
+    defaultConfig {
+        minSdkVersion 16
+        targetSdkVersion 25
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+
+    productFlavors {
+
+        uraru {
+            applicationId "ru.gpcity.uraru"
+            versionCode 2
+            versionName "1.0.1"
+            buildConfigField 'String', 'LOCALE', '"uraru"'
+            resValue "string", "app_name_from_flavors", "URA RU - Ура ру"
+        }
+
+        ekatru {
+            applicationId "ru.gpcity.ekatru"
+            versionCode 1
+            versionName "1.0.0"
+            buildConfigField 'String', 'LOCALE', '"ekatru"'
+            resValue "string", "app_name_from_flavors", "66 ру Екатеринбург"
+        }
+    }
+
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
+    compile 'com.android.support:appcompat-v7:25.1.0'
+    testCompile 'junit:junit:4.12'
+
+    compile 'com.yandex.android:mobmetricalib:2.60'
+}
